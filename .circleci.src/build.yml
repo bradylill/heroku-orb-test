@@ -1,0 +1,7 @@
+version: 2
+
+jobs:
+  print-version:
+    steps:
+      - heroku/install
+      - run: heroku --version
