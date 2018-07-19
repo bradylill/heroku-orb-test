@@ -1,7 +1,14 @@
 version: 2
 
 jobs:
-  print-version:
+  print_version:
+    machine: true
     steps:
       - heroku/install
       - run: heroku --version
+
+workflows:
+  version: 2
+  dev:
+    jobs:
+      - print_version

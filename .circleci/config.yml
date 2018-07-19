@@ -1,5 +1,6 @@
 jobs:
-  print-version:
+  print_version:
+    machine: true
     steps:
     - heroku/install
     - run: heroku --version
@@ -43,4 +44,9 @@ orbs:
       description: Provides basic functionality for deploying to Heroku
       version: 2
 version: 2
+workflows:
+  dev:
+    jobs:
+    - print_version
+  version: 2
 
