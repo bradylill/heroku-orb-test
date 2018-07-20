@@ -1,0 +1,22 @@
+{
+  "name": "heroku-orb-test",
+  "version": "1.0.0",
+  "description": "Test usage of the circleci heroku orb.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradylill/heroku-orb-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradylill/heroku-orb-test/issues"
+  },
+  "homepage": "https://github.com/bradylill/heroku-orb-test#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

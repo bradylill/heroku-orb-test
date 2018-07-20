@@ -1,17 +1,23 @@
 jobs:
-  print_version:
+  deploy:
     docker:
-    - image: buildpack-deps:bionic-curl
+    - image: buildpack-deps:bionic
     steps:
-    - heroku/install
-    - run: heroku --version
+    - checkout
+    - heroku/deploy
 orbs:
   heroku:
     commands:
+      deploy:
+        steps:
+        - run:
+            command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+              master
+            name: Deploy Master to Heroku
       install:
         steps:
         - run:
-            command: |-
+            command: |
               if [[ $(command -v heroku) == "" ]]; then
                 curl https://cli-assets.heroku.com/install.sh | sh
               else
@@ -22,8 +28,8 @@ orbs:
     version: 2
 version: 2
 workflows:
-  dev:
+  ci:
     jobs:
-    - print_version
+    - deploy
   version: 2
 

@@ -1,15 +1,15 @@
 version: 2
 
 jobs:
-  print_version:
+  deploy:
     docker:
-      - image: buildpack-deps:bionic-curl
+      - image: buildpack-deps:bionic
     steps:
-      - heroku/install
-      - run: heroku --version
+      - checkout
+      - heroku/deploy
 
 workflows:
   version: 2
-  dev:
+  ci:
     jobs:
-      - print_version
+      - deploy
