@@ -1,6 +1,7 @@
 jobs:
   print_version:
-    machine: true
+    docker:
+    - image: ubuntu:bionic
     steps:
     - heroku/install
     - run: heroku --version
