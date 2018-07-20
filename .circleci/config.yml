@@ -1,7 +1,6 @@
 jobs:
   deploy:
-    docker:
-    - image: buildpack-deps:bionic
+    executor: heroku/default
     steps:
     - checkout
     - heroku/deploy
@@ -25,6 +24,14 @@ orbs:
               fi
             name: Install Heroku CLI, if necessary
     description: Provides basic functionality for deploying to Heroku
+    executors:
+      default:
+        docker:
+        - image: buildpack-deps:{{parameters.tag}}
+        parameters:
+          tag:
+            default: bionic
+            type: string
     version: 2
 version: 2
 workflows:

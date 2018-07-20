@@ -2,8 +2,7 @@ version: 2
 
 jobs:
   deploy:
-    docker:
-      - image: buildpack-deps:bionic
+    executor: heroku/default
     steps:
       - checkout
       - heroku/deploy
