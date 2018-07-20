@@ -27,7 +27,7 @@ orbs:
     executors:
       default:
         docker:
-        - image: buildpack-deps:{{parameters.tag}}
+        - image: buildpack-deps:<< parameters.tag >>
         parameters:
           tag:
             default: bionic

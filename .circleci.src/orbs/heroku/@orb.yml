@@ -8,7 +8,7 @@ executors:
         type: string
         default: "bionic"
     docker:
-      - image: buildpack-deps:{{parameters.tag}}
+      - image: buildpack-deps:<< parameters.tag >>
 
 commands:
   install:
