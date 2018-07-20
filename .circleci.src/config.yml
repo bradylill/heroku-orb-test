@@ -3,7 +3,7 @@ version: 2
 jobs:
   print_version:
     docker:
-      - image: ubuntu:bionic
+      - image: buildpack-deps:bionic-curl
     steps:
       - heroku/install
       - run: heroku --version
