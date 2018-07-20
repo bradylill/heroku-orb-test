@@ -1,52 +1,14 @@
+version: 2
+
 jobs:
   print_version:
     machine: true
     steps:
-    - heroku/install
-    - run: heroku --version
-orbs:
-  heroku:
-    orb:
-      commands:
-        install:
-          parameters:
-            arch:
-              default: x86
-              description: The target CPU architecture for the heroku binary. Must
-                be one of “x64”, “x86”, “arm”.
-              enum:
-              - “x64”
-              - “x86”
-              - “arm”
-              type: enum
-            os:
-              default: “linux”
-              description: The target Operating System for the heroku binary. Must
-                be one of "linux", “darwin”, “win32”.
-              enum:
-              - linux
-              - “darwin”
-              - “win32”
-              type: enum
-          steps:
-          - run:
-              command: |-
-                if [[ $(command -v heroku) == "" ]]; then
-                  wget https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-{{parameters.os}}-{{parameters.arch}}.tar.gz -O heroku.tar.gz
-                  mkdir $HOME/heroku
-                  tar -xvzf heroku.tar.gz -C $HOME/heroku --strip-components 1
-                  cd $HOME/heroku
-                  ./install
-                else
-                  echo "Heroku is already installed. No operation was performed."
-                fi
-              name: Install Heroku CLI, if necessary
-      description: Provides basic functionality for deploying to Heroku
-      version: 2
-version: 2
+      - heroku/install
+      - run: heroku --version
+
 workflows:
+  version: 2
   dev:
     jobs:
-    - print_version
-  version: 2
-
+      - print_version
